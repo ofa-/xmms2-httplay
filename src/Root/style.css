@@ -1,0 +1,147 @@
+#main {
+    width: 640px;
+    height: 200px;
+    background-image: url(images/mainbg.png);
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+#maindiv {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#ctrls {
+    position: relative;
+    float: left;
+    left: 70px;
+    top: 40px;
+    padding: 0px;
+    width: 130px;
+    height: 130px;
+}
+
+#status {
+    position: relative;
+    float: left;
+    left: 150px;
+    top: 50px;
+    width: 300px;
+    height: 100px;
+    color: rgb(60, 100, 100);
+}
+
+#bitrate {
+    float: right;
+}
+
+#time {
+    float: left;
+}
+
+#timebar {
+    position: relative;
+    top: 30px;
+    height: 5px;
+    border: rgb(60, 100, 100) 1px solid;
+}
+
+#innertimebar {
+    border: 0px;
+    background-color: rgb(80, 130, 130);
+    width: 30%;
+    height: 100%;
+}
+
+#sliderbox {
+    position: absolute;
+    width: 500px;
+    top: 180px;
+    left: 80px;
+    overflow: hidden;
+    color: rgb(200, 100, 0);
+}
+
+#slider {
+    width: 500px;
+    height: 300px;
+    border: 0px;
+    position: relative;
+}
+
+#slider > div {
+    border: 0px;
+    margin: 0px;
+    padding: 0px;
+    float: left;
+    position: relative;
+}
+
+#sliderl {
+    width: 50px;
+    height: 202px;
+    background-image: url(images/slidedown_l.png);
+}
+
+#sliderc {
+    width: 400px;
+    background-image: url(images/slidedown_c.png);
+    height: 202px;
+    overflow: auto;
+}
+
+#sliderr {
+    width: 50px;
+    height: 202px;
+    background-image: url(images/slidedown_r.png);
+}
+
+#sliderbl {
+    width: 50px;
+    height: 33px;
+    background-image: url(images/slidedown_bl.png);
+}
+
+#sliderbc {
+    height: 33px;
+    width: 400px;
+    background-image: url(images/slidedown_b.png);
+}
+
+#sliderbr {
+    height: 33px;
+    width: 50px;
+    background-image: url(images/slidedown_br.png);
+}
+
+#plist {
+    position: absolute;
+    z-index: 50;
+    left:0px;
+    top:0px;
+    right:0px;
+}
+
+#mlib {
+    position: absolute;
+    z-index: 100;
+    left:0px;
+    right:0px;
+    top:0px;
+    width: auto;
+}
+
+#mlibForm {
+    display: inline;
+}
+
+#listable td {
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(AA,88,66);
+    width: auto;
+}
+}
+

@@ -1,0 +1,21 @@
+Requirements
+    - python >= 2.5
+    - python-simplejson
+    - xmms2 with python support (tested against DrMattDestruction, it probably won't work with another DR version)
+
+Building
+    - no need to build
+
+Running
+    cd src
+    python main.py
+    then browse to http://localhost:8000/
+
+
+You may report bugs to http://xmms2-httplay.googlecode.com/
+
+
+Enjoy!
+--
+Simon Poirier
+

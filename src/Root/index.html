@@ -1,0 +1,65 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="style.css"/>
+        <script type="text/javascript" src="jquery-1.3.2.min.js"></script>
+        <script type="text/javascript" src="jquery-ui-1.7.2.custom.min.js"></script>
+        <script type="text/javascript" src="channel.js"></script>
+        <script type="text/javascript" src="main.js"></script>
+    </head>
+    <body>
+        <div id="maindiv">
+            <p style="vertical-align:text-top;"><img src="images/logo.png"/><em
+                style="font-size:40px;font-style:normal;">XMMS2 HTTPlayer</em></p>
+            <div id="main">
+                <div id="ctrls">
+                    <img usemap="#ctrlmap" src="images/mainctrls.png"/>
+                    <map name="ctrlmap">
+                        <area shape="circle" coords="35,100,20" href="#"
+                        onclick='javascript:$.get("cli/prev");'/>
+                        <area shape="circle" coords="100,25,20" href="#"
+                        onclick='javascript:$.get("cli/next");'/>
+                        <area shape="circle" coords="60,60,50" href="#"
+                        onclick='javascript:$.get("cli/play");'/>
+                        <area shape="rectangle" coords="90,110,120,130" href="#"
+                        onclick='javascript:toggle_slider("plist");'/>
+                        <area shape="rectangle" coords="10,5,40,20" href="#"
+                        onclick='javascript:toggle_slider("mlib");'/>
+                    </map>
+                </div>
+                <div id="status">
+                    <marquee id="banner">currently playing...</marquee>
+                    <p/>
+                    <div id="bitrate">0kbps</div>
+                    <div id="time" onclick='javascript:fliptime();'>0min 0sec/0min 0sec</div>
+                    <p/>
+                    <div id="timebar">
+                        <div id="innertimebar"></div>
+                    </div>
+                </div>
+                <div id="sliderbox">
+                    <div id="slider">
+                        <div id="sliderl"></div>
+                        <div id="sliderc">
+                            <div id="plist">
+                                <table id="listable"></table>
+                                <a href="#" onclick="pls_clear()">[Clear]</a>
+                            </div>
+                            <div id="mlib">
+                                <form id="mlibForm">
+                                    <input type="text" id="querytxt"/>
+                                </form>
+                                <a href="#" onclick="filter_mlib(true)">[Add]</a>
+                                <table id="filtered_mlib"></table>
+                            </div>
+                        </div>
+                        <div id="sliderr"></div>
+                        <div id="sliderbl"></div>
+                        <div id="sliderbc"></div>
+                        <div id="sliderbr"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
