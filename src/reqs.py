@@ -17,6 +17,9 @@ from sys import path
 path.append('/usr/local/lib/python2.5/site-packages/')
 import xmmsclient
 from simplejson import JSONEncoder, JSONDecoder
+import subprocess, sys
+
+DAEMON_COMMAND = 'xmms2d'
 
 
 def test(**kwargs):
@@ -28,7 +31,16 @@ def test(**kwargs):
 class Cli(object):
     def __init__(self):
         self.c = xmmsclient.XMMS()
-        self.c.connect()
+        try:
+            self.c.connect()
+        except IOError:
+            daemon = subprocess.Popen([DAEMON_COMMAND, '-s', '2'],
+                                      stderr=subprocess.PIPE)
+            if daemon.stderr.read(1) != '+':
+                print "error launching %s" % DAEMON_COMMAND
+                sys.exit(-1)
+
+            self.c.connect()
 
     def prev(self):
         self.c.playlist_set_next_rel(-1).wait()
