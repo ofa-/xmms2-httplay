@@ -12,29 +12,31 @@
             <p style="vertical-align:text-top;"><img src="images/logo.png"/><em
                 style="font-size:40px;font-style:normal;">XMMS2 HTTPlayer</em></p>
             <div id="main">
-                <div id="ctrls">
-                    <img usemap="#ctrlmap" src="images/mainctrls.png"/>
-                    <map name="ctrlmap">
-                        <area shape="circle" coords="35,100,20" href="#"
-                        onclick='javascript:$.get("cli/prev");'/>
-                        <area shape="circle" coords="100,25,20" href="#"
-                        onclick='javascript:$.get("cli/next");'/>
-                        <area shape="circle" coords="60,60,50" href="#"
-                        onclick='javascript:$.get("cli/play");'/>
-                        <area shape="rectangle" coords="90,110,120,130" href="#"
-                        onclick='javascript:toggle_slider("plist");'/>
-                        <area shape="rectangle" coords="10,5,40,20" href="#"
-                        onclick='javascript:toggle_slider("mlib");'/>
-                    </map>
-                </div>
-                <div id="status">
-                    <marquee id="banner">currently playing...</marquee>
-                    <p/>
-                    <div id="bitrate">0kbps</div>
-                    <div id="time" onclick='javascript:fliptime();'>0min 0sec/0min 0sec</div>
-                    <p/>
-                    <div id="timebar">
-                        <div id="innertimebar"></div>
+                <div id="mainctrls">
+                    <div id="ctrls">
+                        <img usemap="#ctrlmap" src="images/mainctrls.png"/>
+                        <map name="ctrlmap">
+                            <area shape="circle" coords="35,100,20" href="#"
+                                  onclick='javascript:$.get("cli/prev");'/>
+                            <area shape="circle" coords="100,25,20" href="#"
+                                  onclick='javascript:$.get("cli/next");'/>
+                            <area shape="circle" coords="60,60,50" href="#"
+                                  onclick='javascript:$.get("cli/play");'/>
+                            <area shape="rectangle" coords="90,110,120,130" href="#"
+                                  onclick='javascript:toggle_slider("plist");'/>
+                            <area shape="rectangle" coords="10,5,40,20" href="#"
+                                  onclick='javascript:toggle_slider("mlib");'/>
+                        </map>
+                    </div>
+                    <div id="status">
+                        <marquee id="banner">currently playing...</marquee>
+                        <p/>
+                        <div id="bitrate">0kbps</div>
+                        <div id="time" onclick='javascript:fliptime();'>0min 0sec/0min 0sec</div>
+                        <p/>
+                        <div id="timebar">
+                            <div id="innertimebar"></div>
+                        </div>
                     </div>
                 </div>
                 <div id="sliderbox">

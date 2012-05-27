@@ -1,7 +1,15 @@
-#main {
+#mainctrls {
     width: 640px;
     height: 200px;
     background-image: url(images/mainbg.png);
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+#main {
+    width: 640px;
     margin-left: auto;
     margin-right: auto;
     margin-top: auto;
