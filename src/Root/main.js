@@ -114,7 +114,7 @@ $(document).ready(function() {
         initialize_timers();
         $("#timebar").click(seek);
         update_list();
-        $("#main").draggable();
+        // $("#main").draggable();
         $("#mlibForm").submit(filter_mlib);
         $("#mlib").toggle();
 });
