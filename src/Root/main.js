@@ -6,7 +6,6 @@ TIME_DELAY = 200;
 LIST_FIELDS = ['title', 'artist', 'tracknr', 'album'];
 PLIST_HEIGHT = "300px";
 slider_visible = "plist";
-slider_open = true;
 
 function update_list() {
     $.getJSON("cli/list", function(list) {
@@ -40,13 +39,16 @@ function asctime(t) {
 
 function toggle_slider(content) {
     if (content == 'plist' && slider_visible != 'plist') update_list();
-    if (content != slider_visible) {
+    if (slider_visible == "") {
+        $("#"+content).fadeIn("slow");
+        slider_visible = content;
+    } else if (content != slider_visible) {
         $("#"+slider_visible).fadeOut("slow");
         slider_visible = content;
         $("#"+content).fadeIn("slow");
     } else {
-        $("#slider").animate({"top": (slider_open?"-=":"+=")+PLIST_HEIGHT}, "slow");
-        slider_open = !slider_open;
+        $("#"+slider_visible).fadeOut("slow");
+        slider_visible = "";
     }
 }
 
