@@ -1,4 +1,5 @@
 statusTimerID = null;
+listTimerID = null;
 timeTimerID = null;
 revtime = false;
 g_info = null;
@@ -77,6 +78,7 @@ function update_time() {
 function run_status() {
     update_status();
     statusTimerID = self.setTimeout("run_status()", 5000);
+    listTimerID = self.setTimeout("update_list()", 60000);
 }
 
 function pls_clear() {
