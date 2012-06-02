@@ -16,6 +16,7 @@
 from sys import path
 path.append('/usr/local/lib/python2.5/site-packages/')
 import xmmsclient
+import xmmsclient.collections
 from simplejson import JSONEncoder, JSONDecoder
 import subprocess, sys
 
@@ -89,8 +90,8 @@ class Cli(object):
             listing.append(dict([(k[1], info[k]) for k in info]))
         return JSONEncoder().encode(listing)
 
-        coll = xmmsclient.xmmsapi.coll_parse(q)
     def search(self, q, f, add=False):
+        coll = xmmsclient.collections.coll_parse(q)
         r = self.c.coll_query_infos(coll, f.split('+'))
         r.wait()
         if add:
