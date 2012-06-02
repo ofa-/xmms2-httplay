@@ -111,10 +111,18 @@ function filter_mlib(add) {
                     field.appendChild(document.createTextNode(result[i][LIST_FIELDS[j]]));
                     row.appendChild(field);
                 }
+                field = document.createElement("td");
+                $("<a href=\"#\" onclick=\"add_song(" + result[i]['id'] + ")\">[Add]</a>").appendTo(field);
+                row.appendChild(field);
                 $('#filtered_mlib').append(row);
             }
         }
     );
+    return false;
+}
+
+function add_song(add) {
+    $.post("cli/add_song?q="+add);
     return false;
 }
 

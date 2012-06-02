@@ -98,8 +98,10 @@ class Cli(object):
             self.c.playlist_add_collection(coll).wait()
         return JSONEncoder().encode(r.value())
 
+    def add_song(self, q):
+        self.search("#" + q, "", "True")
+
     def clear(self):
         self.c.playlist_clear().wait()
 
 cli = Cli()
-
