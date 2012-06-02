@@ -90,11 +90,11 @@ class Cli(object):
             listing.append(dict([(k[1], info[k]) for k in info]))
         return JSONEncoder().encode(listing)
 
-    def search(self, q, f, add=False):
+    def search(self, q, f, add="False"):
         coll = xmmsclient.collections.coll_parse(q)
         r = self.c.coll_query_infos(coll, f.split('+'))
         r.wait()
-        if add:
+        if add == "True":
             self.c.playlist_add_collection(coll).wait()
         return JSONEncoder().encode(r.value())
 
