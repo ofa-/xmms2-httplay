@@ -89,8 +89,8 @@ class Cli(object):
             listing.append(dict([(k[1], info[k]) for k in info]))
         return JSONEncoder().encode(listing)
 
-    def mlib(self, q, f, add=False):
         coll = xmmsclient.xmmsapi.coll_parse(q)
+    def search(self, q, f, add=False):
         r = self.c.coll_query_infos(coll, f.split('+'))
         r.wait()
         if add:
