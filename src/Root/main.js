@@ -131,6 +131,7 @@ function add_song(add) {
 
 function remove_song(pos) {
     $.post("cli/remove_song?q="+pos);
+    update_list();
     return false;
 }
 
