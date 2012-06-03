@@ -126,6 +126,11 @@ function add_song(add) {
     return false;
 }
 
+function remove_song(pos) {
+    $.post("cli/remove_song?q="+pos);
+    return false;
+}
+
 $(document).ready(function() {
         initialize_timers();
         $("#timebar").click(seek);
