@@ -101,6 +101,9 @@ class Cli(object):
     def add_song(self, q):
         self.search("#" + q, "", "True")
 
+    def remove_song(self, q):
+        self.c.playlist_remove_entry(int(q)).wait()
+
     def clear(self):
         self.c.playlist_clear().wait()
 
