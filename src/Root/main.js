@@ -18,6 +18,9 @@ function update_list() {
                 field.appendChild(document.createTextNode(list[i][LIST_FIELDS[j]]));
                 row.appendChild(field);
             }
+            field = document.createElement("td");
+            $("<a href=\"#\" onclick=\"remove_song(" + i + ")\">[-]</a>").appendTo(field);
+            row.appendChild(field);
             $('#listable').append(row);
         }
     });
