@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# Copyright 2012 Remi Vanicat
 # Copyright 2009 Simon Poirier
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -32,16 +33,15 @@ def test(**kwargs):
 class Cli(object):
     def __init__(self):
         self.c = xmmsclient.XMMS()
-        try:
-            self.c.connect()
-        except IOError:
-            daemon = subprocess.Popen([DAEMON_COMMAND, '-s', '2'],
-                                      stderr=subprocess.PIPE)
-            if daemon.stderr.read(1) != '+':
-                print "error launching %s" % DAEMON_COMMAND
-                sys.exit(-1)
-
-            self.c.connect()
+        unconnected = True
+        while unconnected :
+            try:
+                self.c.connect()
+                unconnected = False
+            except IOError:
+                print('Fail to connect, is the xmms2 server running?')
+                print('Waiting for 10 second.')
+                time.sleep(10)
 
     def prev(self):
         self.c.playlist_set_next_rel(-1).wait()
