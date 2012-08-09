@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# Copyright 2012 Remi Vanicat
 # Copyright 2009 Simon Poirier
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -27,5 +28,3 @@ if __name__ == "__main__":
         main()
     except KeyboardInterrupt:
         pass
-
-
