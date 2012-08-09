@@ -19,7 +19,7 @@ import service, reqs
 def main():
     handler = service.Service
     httpd = BaseHTTPServer.HTTPServer(('', 8000), handler)
-    reqs.cli.connect()
+    reqs.cli.connect(lambda : httpd.shutdown())
     httpd.serve_forever()
 
 if __name__ == "__main__":

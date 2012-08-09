@@ -19,7 +19,7 @@ path.append('/usr/local/lib/python2.5/site-packages/')
 import xmmsclient
 import xmmsclient.collections
 from simplejson import JSONEncoder, JSONDecoder
-import subprocess, sys, time
+import subprocess, sys, time, threading
 
 
 DAEMON_COMMAND = 'xmms2d'
@@ -32,12 +32,14 @@ def test(**kwargs):
     return ret
 
 class Cli(object):
-    def connect(self):
+    def connect(self,shutdown):
         self.c = xmmsclient.XMMS()
         unconnected = True
         while unconnected :
             try:
-                self.c.connect()
+                def do_shutdown(ignored):
+                    threading.Thread(target = shutdown).start()
+                self.c.connect(disconnect_func = do_shutdown)
                 unconnected = False
             except IOError:
                 print('Fail to connect, is the xmms2 server running?')
