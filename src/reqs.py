@@ -32,7 +32,7 @@ def test(**kwargs):
     return ret
 
 class Cli(object):
-    def __init__(self):
+    def connect(self):
         self.c = xmmsclient.XMMS()
         unconnected = True
         while unconnected :
