@@ -19,7 +19,8 @@ path.append('/usr/local/lib/python2.5/site-packages/')
 import xmmsclient
 import xmmsclient.collections
 from simplejson import JSONEncoder, JSONDecoder
-import subprocess, sys
+import subprocess, sys, time
+
 
 DAEMON_COMMAND = 'xmms2d'
 
