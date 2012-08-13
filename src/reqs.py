@@ -107,6 +107,30 @@ class Cli(object):
     def remove_song(self, q):
         self.c.playlist_remove_entry(int(q)).wait()
 
+    def get_volume(self):
+        r = self.c.playback_volume_get()
+        r.wait()
+        return JSONEncoder().encode(r.value()['master'])
+
+    def set_volume(self, q):
+        r = self.c.playback_volume_set('master',int(q)).wait()
+
+    def inc_volume(self):
+        r = self.c.playback_volume_get()
+        r.wait()
+        vol = r.value()['master']
+        vol += 5
+        r = self.c.playback_volume_set('master',vol).wait()
+        return JSONEncoder().encode(vol)
+
+    def dec_volume(self):
+        r = self.c.playback_volume_get()
+        r.wait()
+        vol = r.value()['master']
+        vol -= 5
+        r = self.c.playback_volume_set('master',vol).wait()
+        return JSONEncoder().encode(vol)
+
     def clear(self):
         self.c.playlist_clear().wait()
 
