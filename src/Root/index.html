@@ -12,21 +12,6 @@
             <p ><h1><img src="images/logo.png"/>XMMS2 HTTPlayer</h1></p>
             <div id="main">
                 <div id="mainctrls">
-                    <div id="ctrls">
-                        <img usemap="#ctrlmap" src="images/mainctrls.png"/>
-                        <map name="ctrlmap">
-                            <area shape="circle" coords="35,100,20" href="#"
-                                  onclick='javascript:$.get("cli/prev");'/>
-                            <area shape="circle" coords="100,25,20" href="#"
-                                  onclick='javascript:$.get("cli/next");'/>
-                            <area shape="circle" coords="60,60,50" href="#"
-                                  onclick='javascript:$.get("cli/play");'/>
-                            <area shape="rectangle" coords="90,110,120,130" href="#"
-                                  onclick='javascript:toggle_slider("plist");'/>
-                            <area shape="rectangle" coords="10,5,40,20" href="#"
-                                  onclick='javascript:toggle_slider("mlib");'/>
-                        </map>
-                    </div>
                     <div id="status">
                         <marquee id="banner">currently playing...</marquee>
                         <p/>
@@ -37,6 +22,80 @@
                             <div id="innertimebar"></div>
                         </div>
                     </div>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="640px" height="200px" viewBox="0 0 6400 2000">
+                    <linearGradient
+                       id="greyhing">
+                      <stop
+                         style="stop-color:#aaaaaa;stop-opacity:1;"
+                         offset="0"
+                         id="stop3168" />
+                      <stop
+                         style="stop-color:#ffffff;stop-opacity:1;"
+                         offset="1"
+                         id="stop3170" />
+                    </linearGradient>
+
+                    <linearGradient
+                       inkscape:collect="always"
+                       xlink:href="#greyhing"
+                       id="mainbg"
+                       gradientUnits="userSpaceOnUse"
+                       x1="2020"
+                       y1="6000"
+                       x2="-100"
+                       y2="-1000" />
+
+                    <path d="M 6200,0 a 200,200 45 0,1 +200,+200
+                             V 1800 a 200,200 135 0,1 -200,+200
+                             H 200 a 200,200 225 0,1 -200,-200
+                             V 200 a 200,200 135 0,1 +200,-200
+                             z" style='fill:url("#mainbg") rgb(0, 0, 0);'/>
+                    <circle onclick='javascript:$.get("cli/play");'
+                            cx="1000" cy="1000" r = "600"
+                            style="opacity:0.7;fill:#7b7b7b;"
+                            />
+                    <path onclick='javascript:$.get("cli/play");'
+                          d="M 750,1300 L 1450,1000 L 750,700 z"
+                          style="opacity:0.7;fill:#7b7b7b;"
+                          />
+                    <path d="M 6000,200 a 200,200 45 0,1 +200,+200
+                             V 1400 a 200,200 135 0,1 -200,+200
+                             H 2200 a 200,200 225 0,1 -200,-200
+                             V 400 a 200,200 135 0,1 +200,-200
+                             z" style="fill:rgb(162, 182, 186);"/>
+
+                    <g transform="translate(2200,1700)"
+                       onclick='javascript:toggle_slider("plist");'>
+                      <path
+                         d="M 0,0
+                            h 600 a 50,50 225 0,1 +50,+50
+                            v +100 a 50,50 135 0,1 -50,+50
+                            h -600 a 50,50 225 0,1 -50,-50
+                            v -100 a 50,50 135 0,1 +50,-50
+                            z"
+                         style="opacity:0.7;fill:#7b7b7b;"/>
+
+                      <text x="300" y="150" font-size="150" text-anchor="middle">
+                        playlist
+                      </text>
+                    </g>
+
+                    <g transform="translate(3100,1700)"
+                       onclick='javascript:toggle_slider("mlib");'>
+                      <path
+                         d="M 0,0
+                            h 600 a 50,50 225 0,1 +50,+50
+                            v +100 a 50,50 135 0,1 -50,+50
+                            h -600 a 50,50 225 0,1 -50,-50
+                            v -100 a 50,50 135 0,1 +50,-50
+                            z"
+                         style="opacity:0.7;fill:#7b7b7b;"/>
+
+                      <text x="300" y="150" font-size="150" text-anchor="middle">
+                        search
+                      </text>
+                    </g>
+                  </svg>
                 </div>
                 <div id="sliderbox">
                     <div id="slider">
