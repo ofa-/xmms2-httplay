@@ -1,126 +1,122 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <link rel="stylesheet" type="text/css" href="style.css"/>
-        <script type="text/javascript" src="jquery-1.3.2.min.js"></script>
-        <script type="text/javascript" src="jquery-ui-1.7.2.custom.min.js"></script>
-        <script type="text/javascript" src="channel.js"></script>
-        <script type="text/javascript" src="main.js"></script>
-    </head>
-    <body>
-        <div id="maindiv">
-            <p ><h1><img src="images/logo.png"/>XMMS2 HTTPlayer</h1></p>
-            <div id="main">
-                <div id="mainctrls">
-                    <div id="status">
-                        <marquee id="banner">currently playing...</marquee>
-                        <p/>
-                        <div id="bitrate">0kbps</div>
-                        <div id="time" onclick='javascript:fliptime();'>0min 0sec/0min 0sec</div>
-                        <p/>
-                        <div id="timebar">
-                            <div id="innertimebar"></div>
-                        </div>
-                    </div>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="640px" height="200px" viewBox="0 0 6400 2000">
-                    <linearGradient
-                       id="greyhing">
-                      <stop
-                         style="stop-color:#aaaaaa;stop-opacity:1;"
-                         offset="0"
-                         id="stop3168" />
-                      <stop
-                         style="stop-color:#ffffff;stop-opacity:1;"
-                         offset="1"
-                         id="stop3170" />
-                    </linearGradient>
+  <head>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <script type="text/javascript" src="jquery-1.3.2.min.js"></script>
+    <script type="text/javascript" src="jquery-ui-1.7.2.custom.min.js"></script>
+    <script type="text/javascript" src="channel.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+  </head>
+  <body>
+    <div id="maindiv">
+      <p ><h1><img src="images/logo.png"/>XMMS2 HTTPlayer</h1></p>
+      <div id="main">
+        <div id="mainctrls">
+          <svg xmlns="http://www.w3.org/2000/svg" width="640px" height="200px" viewBox="0 0 6400 2000">
+            <linearGradient
+               id="greyhing">
+              <stop
+                 style="stop-color:#aaaaaa;stop-opacity:1;"
+                 offset="0"
+                 id="stop3168" />
+              <stop
+                 style="stop-color:#ffffff;stop-opacity:1;"
+                 offset="1"
+                 id="stop3170" />
+            </linearGradient>
 
-                    <linearGradient
-                       inkscape:collect="always"
-                       xlink:href="#greyhing"
-                       id="mainbg"
-                       gradientUnits="userSpaceOnUse"
-                       x1="2020"
-                       y1="6000"
-                       x2="-100"
-                       y2="-1000" />
+            <linearGradient
+               inkscape:collect="always"
+               xlink:href="#greyhing"
+               id="mainbg"
+               gradientUnits="userSpaceOnUse"
+               x1="2020"
+               y1="6000"
+               x2="-100"
+               y2="-1000" />
 
-                    <path d="M 6200,0 a 200,200 45 0,1 +200,+200
-                             V 1800 a 200,200 135 0,1 -200,+200
-                             H 200 a 200,200 225 0,1 -200,-200
-                             V 200 a 200,200 135 0,1 +200,-200
-                             z" style='fill:url("#mainbg") rgb(0, 0, 0);'/>
-                    <circle onclick='javascript:$.get("cli/play");'
-                            cx="1000" cy="1000" r = "600"
-                            style="opacity:0.7;fill:#7b7b7b;"
-                            />
-                    <path onclick='javascript:$.get("cli/play");'
-                          d="M 750,1300 L 1450,1000 L 750,700 z"
-                          style="opacity:0.7;fill:#7b7b7b;"
-                          />
-                    <path d="M 6000,200 a 200,200 45 0,1 +200,+200
-                             V 1400 a 200,200 135 0,1 -200,+200
-                             H 2200 a 200,200 225 0,1 -200,-200
-                             V 400 a 200,200 135 0,1 +200,-200
-                             z" style="fill:rgb(162, 182, 186);"/>
+            <path d="M 6200,0 a 200,200 45 0,1 +200,+200
+                     V 1800 a 200,200 135 0,1 -200,+200
+                     H 200 a 200,200 225 0,1 -200,-200
+                     V 200 a 200,200 135 0,1 +200,-200
+                     z" style='fill:url("#mainbg") rgb(0, 0, 0);'/>
+            <circle onclick='javascript:$.get("cli/play");'
+                    cx="1000" cy="1000" r = "600"
+                    style="opacity:0.7;fill:#7b7b7b;"
+                    />
+            <path d="M 750,1300 L 1450,1000 L 750,700 z"
+                  style="opacity:0.7;fill:#7b7b7b;" />
+            <path d="M 6000,200 a 200,200 45 0,1 +200,+200
+                     V 1400 a 200,200 135 0,1 -200,+200
+                     H 2200 a 200,200 225 0,1 -200,-200
+                     V 400 a 200,200 135 0,1 +200,-200
+                     z" style="fill:rgb(162, 182, 186);"/>
 
-                    <g transform="translate(2200,1700)"
-                       onclick='javascript:toggle_slider("plist");'>
-                      <path
-                         d="M 0,0
-                            h 600 a 50,50 225 0,1 +50,+50
-                            v +100 a 50,50 135 0,1 -50,+50
-                            h -600 a 50,50 225 0,1 -50,-50
-                            v -100 a 50,50 135 0,1 +50,-50
-                            z"
-                         style="opacity:0.7;fill:#7b7b7b;"/>
+            <g transform="translate(2200,1700)"
+               onclick='javascript:toggle_slider("plist");'>
+              <path
+                 d="M 0,0
+                    h 600 a 50,50 225 0,1 +50,+50
+                    v +100 a 50,50 135 0,1 -50,+50
+                    h -600 a 50,50 225 0,1 -50,-50
+                    v -100 a 50,50 135 0,1 +50,-50
+                    z"
+                 style="opacity:0.7;fill:#7b7b7b;"/>
 
-                      <text x="300" y="150" font-size="150" text-anchor="middle">
-                        playlist
-                      </text>
-                    </g>
+              <text x="300" y="150" font-size="150" text-anchor="middle">
+                playlist
+              </text>
+            </g>
 
-                    <g transform="translate(3100,1700)"
-                       onclick='javascript:toggle_slider("mlib");'>
-                      <path
-                         d="M 0,0
-                            h 600 a 50,50 225 0,1 +50,+50
-                            v +100 a 50,50 135 0,1 -50,+50
-                            h -600 a 50,50 225 0,1 -50,-50
-                            v -100 a 50,50 135 0,1 +50,-50
-                            z"
-                         style="opacity:0.7;fill:#7b7b7b;"/>
+            <g transform="translate(3100,1700)"
+               onclick='javascript:toggle_slider("mlib");'>
+              <path
+                 d="M 0,0
+                    h 600 a 50,50 225 0,1 +50,+50
+                    v +100 a 50,50 135 0,1 -50,+50
+                    h -600 a 50,50 225 0,1 -50,-50
+                    v -100 a 50,50 135 0,1 +50,-50
+                    z"
+                 style="opacity:0.7;fill:#7b7b7b;"/>
 
-                      <text x="300" y="150" font-size="150" text-anchor="middle">
-                        search
-                      </text>
-                    </g>
-                  </svg>
-                </div>
-                <div id="sliderbox">
-                    <div id="slider">
-                        <div id="sliderl"></div>
-                        <div id="sliderc">
-                            <div id="plist">
-                                <table id="listable"></table>
-                                <a href="#" onclick="pls_clear()">[Clear]</a>
-                            </div>
-                            <div id="mlib">
-                                <form id="mlibForm">
-                                    <input type="text" id="querytxt"/>
-                                </form>
-                                <a href="#" onclick="filter_mlib(true)">[Search]</a>
-                                <a href="#" onclick="filter_mlib(false)">[Add]</a>
-                                <table id="filtered_mlib"></table>
-                            </div>
-                        </div>
-                        <div id="sliderr"></div>
-                        <div id="sliderbl"></div>
-                        <div id="sliderbc"></div>
-                        <div id="sliderbr"></div>
-                    </div>
-                </div>
+              <text x="300" y="150" font-size="150" text-anchor="middle">
+                search
+              </text>
+            </g>
+          </svg>
+          <div id="status">
+            <marquee id="banner">currently playing...</marquee>
+            <div id="bitrate">0kbps</div>
+            <div id="time" onclick='javascript:fliptime();'>0min 0sec/0min 0sec</div>
+            <div id="timebar">
+              <div id="innertimebar"></div>
             </div>
+          </div>
         </div>
-    </body>
+        <div id="sliderbox">
+          <div id="slider">
+            <div id="sliderl"></div>
+            <div id="sliderc">
+              <div id="plist">
+                <table id="listable"></table>
+                <a href="#" onclick="pls_clear()">[Clear]</a>
+              </div>
+              <div id="mlib">
+                <form id="mlibForm">
+                  <input type="text" id="querytxt"/>
+                </form>
+                <a href="#" onclick="filter_mlib(true)">[Search]</a>
+                <a href="#" onclick="filter_mlib(false)">[Add]</a>
+                <table id="filtered_mlib"></table>
+              </div>
+            </div>
+            <div id="sliderr"></div>
+            <div id="sliderbl"></div>
+            <div id="sliderbc"></div>
+            <div id="sliderbr"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
