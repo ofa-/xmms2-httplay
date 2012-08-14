@@ -40,12 +40,14 @@
                      H 200 a 200,200 225 0,1 -200,-200
                      V 200 a 200,200 135 0,1 +200,-200
                      z" style='fill:url("#mainbg") rgb(0, 0, 0);'/>
-            <circle onclick='javascript:$.get("cli/play");'
-                    cx="1000" cy="1000" r = "600"
-                    style="opacity:0.7;fill:#7b7b7b;"
+            <g id="playpause"
+               onclick='javascript:$.get("cli/play");'>
+              <circle cx="1000" cy="1000" r = "600"
+                      style="opacity:0.4;fill:#7b7b7b;"/>
+              <path d="M 750,1300 L 1450,1000 L 750,700 z"
+                    style="opacity:0.7;fill:#7b7b7b;" />
+            </g>
                     />
-            <path d="M 750,1300 L 1450,1000 L 750,700 z"
-                  style="opacity:0.7;fill:#7b7b7b;" />
             <path d="M 6000,200 a 200,200 45 0,1 +200,+200
                      V 1400 a 200,200 135 0,1 -200,+200
                      H 2200 a 200,200 225 0,1 -200,-200
