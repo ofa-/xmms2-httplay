@@ -12,34 +12,85 @@
       <p ><h1><img src="images/logo.png"/>XMMS2 HTTPlayer</h1></p>
       <div id="main">
         <div id="mainctrls">
-          <svg xmlns="http://www.w3.org/2000/svg" width="640px" height="200px" viewBox="0 0 6400 2000">
-            <linearGradient
-               id="greyhing">
-              <stop
-                 style="stop-color:#aaaaaa;stop-opacity:1;"
-                 offset="0"
-                 id="stop3168" />
-              <stop
-                 style="stop-color:#ffffff;stop-opacity:1;"
-                 offset="1"
-                 id="stop3170" />
-            </linearGradient>
+          <svg xmlns="http://www.w3.org/2000/svg" width="700px" height="240px" viewBox="-100 -100 6900 2300">
+            <defs>
+              <linearGradient
+                 id="greyhing">
+                <stop
+                   style="stop-color:#aaaaaa;stop-opacity:1;"
+                   offset="0"
+                   id="stop3168" />
+                <stop
+                   style="stop-color:#ffffff;stop-opacity:1;"
+                   offset="1"
+                   id="stop3170" />
+              </linearGradient>
 
-            <linearGradient
-               inkscape:collect="always"
-               xlink:href="#greyhing"
-               id="mainbg"
-               gradientUnits="userSpaceOnUse"
-               x1="2020"
-               y1="6000"
-               x2="-100"
-               y2="-1000" />
+              <linearGradient
+                 xlink:href="#greyhing"
+                 id="mainbg"
+                 gradientUnits="userSpaceOnUse"
+                 x1="3200"
+                 y1="1800"
+                 x2="3200"
+                 y2="-10" />
 
-            <path d="M 6200,0 a 200,200 45 0,1 +200,+200
+              <filter
+                 id="filter3493"
+                 x="-0.30457831"
+                 width="10.609157"
+                 y="-1.1319403"
+                 height="12.263881">
+                <feGaussianBlur
+                   stdDeviation="73.075"
+                   id="feGaussianBlur3495" />
+              </filter>
+              <filter
+                 id="filter3489"
+                 x="-0.39226079"
+                 width="10.784522"
+                 y="-01.038418"
+                 height="12.076836">
+                <feGaussianBlur
+                   stdDeviation="54.80625"
+                   id="feGaussianBlur3491" />
+              </filter>
+
+            </defs>
+            <rect id="statuswindow"
+                  x="2000"
+                  y="200"
+                  height="1400"
+                  width="4100"
+                  rx="200"
+                  ry="200"
+                  style="opacity:0.7;fill:#a2b6ba;filter:url(#filter3489);"
+                  />
+            <path id="ctrlboxshadow"
+                  style="opacity:0.71666691;filter:url(#filter3493)"
+                  d="M 6200,0 a 200,200 45 0,1 +200,+200
                      V 1800 a 200,200 135 0,1 -200,+200
                      H 200 a 200,200 225 0,1 -200,-200
                      V 200 a 200,200 135 0,1 +200,-200
-                     z" style='fill:url("#mainbg") rgb(0, 0, 0);'/>
+                     z
+                     M 2190,190 a 200,200 45 0,0 -200,+200
+                     v +1020    a 200,200 45 0,0 +200,+200
+                     h +3720    a 200,200 45 0,0 +200,-200
+                     v -1020    a 200,200 45 0,0 -200,-200
+                     z"
+                  transform="translate(20,20)"/>
+            <path id="ctrlbox"
+                  d="M 6200,0 a 200,200 45 0,1 +200,+200
+                     V 1800 a 200,200 135 0,1 -200,+200
+                     H 200 a 200,200 225 0,1 -200,-200
+                     V 200 a 200,200 135 0,1 +200,-200
+                     z
+                     M 2190,190 a 200,200 45 0,0 -200,+200
+                     v +1020    a 200,200 45 0,0 +200,+200
+                     h +3720    a 200,200 45 0,0 +200,-200
+                     v -1020    a 200,200 45 0,0 -200,-200
+                     z"
+                  style='fill:url("#mainbg") rgb(0, 0, 0);'/>
             <g id="playpause"
                onclick='javascript:$.get("cli/play");'>
               <circle cx="1000" cy="1000" r = "600"
