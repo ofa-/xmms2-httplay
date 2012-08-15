@@ -162,6 +162,40 @@
                 search
               </text>
             </g>
+
+            <g transform="translate(4000,1700)"
+               onclick='javascript:$.get("cli/dec_volume");'>
+              <path
+                 d="M 0,0
+                    h +270
+                    v +200
+                    h -270 a 50,50 225 0,1 -50,-50
+                    v -100 a 50,50 135 0,1 +50,-50
+                    z
+                    "
+                 style="opacity:0.7;fill:#7b7b7b;"/>
+
+              <text x="135" y="150" font-size="150" text-anchor="middle">
+                -
+              </text>
+            </g>
+
+            <g transform="translate(4000,1700)"
+               onclick='javascript:$.get("cli/inc_volume");'>
+              <path
+                 d="M 300,0
+                    h +270 a 50,50 225 0,1 +50,+50
+                    v +100 a 50,50 225 0,1 -50,+50
+                    h -270
+                    v -200
+                    z
+                    "
+                 style="opacity:0.7;fill:#7b7b7b;"/>
+
+              <text x="435" y="150" font-size="150" text-anchor="middle">
+                +
+              </text>
+            </g>
           </svg>
           <div id="status">
             <marquee id="banner">currently playing...</marquee>
