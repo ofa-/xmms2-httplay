@@ -49,6 +49,20 @@
     float: left;
 }
 
+#album {
+    float: left;
+    margin-top: 25px;
+}
+
+#cover {
+    display: inline-block;
+    border: 3px solid #AAA;
+}
+
+#albuminfo p {
+	margin: 0;
+}
+
 #timebar {
     position: relative;
     top: 30px;

@@ -20,6 +20,7 @@ import xmmsclient
 import xmmsclient.collections
 from simplejson import JSONEncoder, JSONDecoder
 import subprocess, sys, time, threading
+import urllib
 
 
 DAEMON_COMMAND = 'xmms2d'
@@ -133,5 +134,9 @@ class Cli(object):
 
     def clear(self):
         self.c.playlist_clear().wait()
+
+    def cover(self, q):
+	url = "http://ajax.googleapis.com/ajax/services/search/images?v=1.0&q="
+	return urllib.urlopen(url+q).read()
 
 cli = Cli()

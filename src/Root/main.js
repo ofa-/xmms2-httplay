@@ -63,6 +63,8 @@ function fliptime() {
 function update_status() {
     $.getJSON("cli/status",
         function(info) {
+            if (!g_info || info.album != g_info.album)
+                update_album(info);
             g_info = info;
             $("#banner").text(info.title + ' - ' + info.artist);
             $("#bitrate").html(info.channels + " channels   " + Math.round(info.bitrate/1000) + "kbps");
@@ -134,6 +136,24 @@ function remove_song(pos) {
     update_list();
     return false;
 }
+
+function update_album(info) {
+    $("#cover").attr("src", "");
+    $("#albuminfo").html(album_info(info));
+    $.getJSON("cli/cover?q="
+               + encodeURIComponent(info.artist + " " + info.album),
+        function(info) {
+            $("#cover").attr("src", info.responseData.results[0].tbUrl);
+        }
+    );
+}
+
+function album_info(info) {
+       return    "<p>" + info.album + "</p>"
+               + "<p>" + info.artist + "</p>"
+               + "<p>" + info.date + "</p>"
+}
+
 
 $(document).ready(function() {
         initialize_timers();
