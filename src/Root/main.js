@@ -6,7 +6,7 @@ g_info = null;
 TIME_DELAY = 200;
 LIST_FIELDS = ['artist', 'title', 'tracknr', 'album'];
 PLIST_HEIGHT = "300px";
-slider_visible = "plist";
+slider_visible = "";
 
 function update_list() {
     $.getJSON("cli/list", function(list) {
@@ -179,4 +179,5 @@ $(document).ready(function() {
         // $("#main").draggable();
         $("#mlibForm").submit(filter_mlib);
         $("#mlib").toggle();
+        $("#plist").toggle();
 });
