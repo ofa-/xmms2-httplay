@@ -102,43 +102,6 @@ body {
     position: relative;
 }
 
-/* #sliderl { */
-/*     width: 50px; */
-/*     height: 202px; */
-/*     background-image: url(images/slidedown_l.png); */
-/* } */
-
-/* #sliderc { */
-/*     width: 400px; */
-/*     background-image: url(images/slidedown_c.png); */
-/*     height: 202px; */
-/*     overflow: auto; */
-/* } */
-
-/* #sliderr { */
-/*     width: 50px; */
-/*     height: 202px; */
-/*     background-image: url(images/slidedown_r.png); */
-/* } */
-
-/* #sliderbl { */
-/*     width: 50px; */
-/*     height: 33px; */
-/*     background-image: url(images/slidedown_bl.png); */
-/* } */
-
-/* #sliderbc { */
-/*     height: 33px; */
-/*     width: 400px; */
-/*     background-image: url(images/slidedown_b.png); */
-/* } */
-
-/* #sliderbr { */
-/*     height: 33px; */
-/*     width: 50px; */
-/*     background-image: url(images/slidedown_br.png); */
-/* } */
-
 #plist {
     position: absolute;
     z-index: 50;
