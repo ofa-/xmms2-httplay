@@ -4,7 +4,7 @@ timeTimerID = null;
 revtime = false;
 g_info = null;
 TIME_DELAY = 200;
-LIST_FIELDS = ['title', 'artist', 'tracknr', 'album'];
+LIST_FIELDS = ['artist', 'title', 'tracknr', 'album'];
 PLIST_HEIGHT = "300px";
 slider_visible = "plist";
 
