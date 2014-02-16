@@ -143,6 +143,8 @@ body {
     left:0px;
     top:0px;
     right:0px;
+    height: 25em;
+    overflow: auto;
 }
 
 #mlib {
