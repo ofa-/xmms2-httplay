@@ -5,6 +5,7 @@ revtime = false;
 g_info = null;
 TIME_DELAY = 200;
 LIST_FIELDS = ['artist', 'title', 'tracknr', 'album'];
+LIST_ORDER  = ['artist', 'album', 'tracknr']
 PLIST_HEIGHT = "300px";
 slider_visible = "";
 
@@ -123,6 +124,7 @@ function initialize_timers() {
 function filter_mlib(add) {
     query = $('#querytxt').val().trim().replace(/^|\s+/g, " ~");
     $.getJSON("cli/search?q=" + encodeURIComponent(query)
+		+"&o="+LIST_ORDER.join('+')
 		+"&f=id+"+LIST_FIELDS.join('+')+(!add?'&add=True':''),
         function(result) {
             $('#filtered_mlib').children().remove();

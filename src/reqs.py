@@ -94,13 +94,14 @@ class Cli(object):
             listing.append(dict([(k[1], info[k]) for k in info]))
         return JSONEncoder().encode(listing)
 
-    def search(self, q, f, add="False"):
+    def search(self, q, f, o, add="False"):
         query = urllib.unquote(q);
+        order = o.split('+')
         coll = xmmsclient.collections.coll_parse(query)
-        r = self.c.coll_query_infos(coll, f.split('+'))
+        r = self.c.coll_query_infos(coll, f.split('+'), order=order)
         r.wait()
         if add == "True":
-            self.c.playlist_add_collection(coll).wait()
+            self.c.playlist_add_collection(coll, order=order).wait()
         return JSONEncoder().encode(r.value())
 
     def add_song(self, q):
