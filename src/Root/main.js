@@ -121,7 +121,9 @@ function initialize_timers() {
 }
 
 function filter_mlib(add) {
-    $.getJSON("cli/search?q="+$('#querytxt').val()+"&f=id+"+LIST_FIELDS.join('+')+(!add?'&add=True':''),
+    query = $('#querytxt').val();
+    $.getJSON("cli/search?q=" + encodeURIComponent(query)
+		+"&f=id+"+LIST_FIELDS.join('+')+(!add?'&add=True':''),
         function(result) {
             $('#filtered_mlib').children().remove();
             for (i in result) {

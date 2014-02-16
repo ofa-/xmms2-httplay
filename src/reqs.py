@@ -95,7 +95,8 @@ class Cli(object):
         return JSONEncoder().encode(listing)
 
     def search(self, q, f, add="False"):
-        coll = xmmsclient.collections.coll_parse(q)
+        query = urllib.unquote(q);
+        coll = xmmsclient.collections.coll_parse(query)
         r = self.c.coll_query_infos(coll, f.split('+'))
         r.wait()
         if add == "True":
