@@ -1,3 +1,7 @@
+body {
+	font-family: monospace;
+}
+
 #mainctrls {
     width: 640px;
     height: 200px;
