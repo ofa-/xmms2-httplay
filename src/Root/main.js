@@ -67,9 +67,24 @@ function update_status() {
                 update_album(info);
             g_info = info;
             $("#banner").text(info.title + ' - ' + info.artist);
-            $("#bitrate").html(info.channels + " channels   " + Math.round(info.bitrate/1000) + "kbps");
+            $("#media").html(media_str(info));
         }
     );
+}
+
+function media_str(info) {
+	//return JSON.stringify(info);
+	return channels_str(info.channels)
+		 + " " + info.url.replace(/.*\./, "")
+		 + " " + Math.round(info.bitrate/1000) + "kbps"
+}
+
+function channels_str(nb_channels) {
+	switch (nb_channels) {
+	case 1: return "mono";
+	case 2: return "";
+	default: return nb_channels + " ch";
+	}
 }
 
 function update_time() {
