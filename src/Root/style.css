@@ -35,6 +35,10 @@ body {
     height: 130px;
 }
 
+#ctrls img {
+    border: 0;
+}
+
 #status {
     position: relative;
     float: left;
