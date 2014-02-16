@@ -1,4 +1,4 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
+<!DOCTYPE HTML>
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="style.css"/>
@@ -7,59 +7,40 @@
         <script type="text/javascript" src="main.js"></script>
     </head>
     <body>
-        <div id="maindiv">
-            <div id="album">
-		<img id="cover" src=""/>
-		<p id="albuminfo"></p>
+        <div id="main">
+            <div id="albumart">
+		<div><div><img id="cover" src=""/></div></div>
 	    </div>
-            <div id="main">
-                <div id="mainctrls">
-                    <div id="ctrls">
-                        <img usemap="#ctrlmap" src="images/mainctrls.png"/>
-                        <map name="ctrlmap">
-                            <area shape="circle" coords="35,100,20" href="#"
-                                  onclick='javascript:$.get("cli/prev");'/>
-                            <area shape="circle" coords="100,25,20" href="#"
-                                  onclick='javascript:$.get("cli/next");'/>
-                            <area shape="circle" coords="60,60,50" href="#"
-                                  onclick='javascript:$.get("cli/play");'/>
-                            <area shape="rectangle" coords="90,110,120,130" href="#"
-                                  onclick='javascript:toggle_slider("plist");'/>
-                            <area shape="rectangle" coords="10,5,40,20" href="#"
-                                  onclick='javascript:toggle_slider("mlib");'/>
-                        </map>
-                    </div>
-                    <div id="status">
+	    <div id="albuminfo"></div>
+            <div id="ctrls">
+                <b id="pls">playlist</b>
+                <b id="lib">medialib</b>
+                <b id="play">play/pause</b>
+                <b id="prev">prev</b>
+                <b id="next">next</b>
+            </div>
+            <div id="status">
                         <div id="banner"></div>
-                        <p/>
                         <div id="media"></div>
-                        <div id="time" onclick='javascript:fliptime();'></div>
-                        <p/>
+                        <div id="time"></div>
                         <div id="timebar">
                             <div id="innertimebar"></div>
                         </div>
-                    </div>
-                </div>
-                <div id="sliderbox">
+            </div>
+        </div>
                     <div id="slider">
-                        <div id="sliderl"></div>
-                        <div id="sliderc">
                             <div id="plist">
                                 <table id="listable"></table>
-                                <a href="#" onclick="pls_clear()">[Clear]</a>
+                                <b id="plistClear">clear</b>
                             </div>
                             <div id="mlib">
                                 <form id="mlibForm">
                                     <input type="text" id="querytxt"/>
+                                    <b id="mlibSearch">search</b>
+                                    <b id="mlibAdd">add</b>
                                 </form>
-                                <a href="#" onclick="filter_mlib(true)">[Search]</a>
-                                <a href="#" onclick="filter_mlib(false)">[Add]</a>
                                 <table id="filtered_mlib"></table>
                             </div>
-                        </div>
                     </div>
-                </div>
-            </div>
-        </div>
     </body>
 </html>

@@ -1,52 +1,53 @@
 body {
 	font-family: monospace;
-}
-
-#mainctrls {
-    width: 640px;
-    height: 200px;
-    background-image: url(images/mainbg.png);
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: auto;
-    margin-bottom: auto;
+	overflow: hidden;
 }
 
 #main {
-    width: 640px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: auto;
-    margin-bottom: auto;
+	position: absolute;
+	width: 100%;
+	top: 1em;
+	z-index: 1;
+	background-color: white;
 }
 
-#maindiv {
-    margin-left: auto;
-    margin-right: auto;
+#slider {
+	position: absolute;
+	top: 11em;
+	bottom: 0;
+	width: 100%;
+	overflow: auto;
+	margin-top: 1.2em;
+}
+
+#main > div {
+	display: inline-block;
+	position: relative;
+	vertical-align: text-top;
+}
+
+#albumart {
+	width: 16em;
+	height: 10em;
+}
+
+#albuminfo {
+	float: left;
+	display: block;
 }
 
 #ctrls {
-    position: relative;
-    float: left;
-    left: 70px;
-    top: 40px;
-    padding: 0px;
-    width: 130px;
-    height: 130px;
-}
-
-#ctrls img {
-    border: 0;
+	width: 8em;
+	display: block;
+	float: left;
+	clear: left;
+	margin-top: 2em;
 }
 
 #status {
-    position: relative;
-    float: left;
-    left: 150px;
-    top: 50px;
-    width: 300px;
-    height: 100px;
-    color: rgb(60, 100, 100);
+	width: 24em;
+	height: 6em;
+	color: rgb(60, 100, 100);
 }
 
 #media {
@@ -57,13 +58,19 @@ body {
     float: left;
 }
 
-#album {
-    float: left;
-    margin-top: 25px;
+#albumart > div {
+	display: table;
+	height: 100%;
+	width: 100%;
+	text-align: center;
+}
+
+#albumart > div > div {
+    display: table-cell;
+    vertical-align: middle;
 }
 
 #cover {
-    display: inline-block;
     border: 3px solid #AAA;
 }
 
@@ -85,49 +92,44 @@ body {
     height: 100%;
 }
 
-#sliderbox {
-    position: relative;
-    color: rgb(200, 100, 0);
-}
-
-#slider {
-    border: 0px;
-    position: relative;
-}
-
 #slider > div {
-    border: 0px;
-    margin: 0px;
-    padding: 0px;
-    position: relative;
-}
-
-#plist {
+    padding-top: 1.2em;
     position: absolute;
-    z-index: 50;
     left:0px;
     top:0px;
-    right:0px;
-    height: 25em;
-    overflow: auto;
 }
 
 #mlib {
-    position: absolute;
-    z-index: 100;
-    left:0px;
-    right:0px;
-    top:0px;
-    width: auto;
+	width: 100%;
 }
 
-#mlibForm {
-    display: inline;
+#mlib table {
+	margin-top: 0.5em;
+}
+
+#mlib form {
+	position: absolute;
+	top: 0;
+	width: 20em;
+}
+
+#mlib input {
+	font-family: monospace;
 }
 
 #listable td {
     border-width: 1px;
     border-style: solid;
     border-color: #AA8866;
-    width: auto;
+}
+
+#plistClear {
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+b {	/* buttons */
+	cursor: pointer;
+	margin-left: 0.2em;
 }

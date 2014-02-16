@@ -173,12 +173,27 @@ function album_info(info) {
                + "<p>" + info.date + "</p>"
 }
 
+function initialize_buttons() {
+	var buttons = {
+		pls:  function () { toggle_slider("plist") },
+		lib:  function () { toggle_slider("mlib") },
+		play: function () { $.get("cli/play") },
+		next: function () { $.get("cli/next") },
+		prev: function () { $.get("cli/prev") },
+		time: function () { fliptime() },
+		mlibSearch: function () { filter_mlib(true) },
+		mlibAdd:    function () { filter_mlib(false) },
+		plistClear: function () { pls_clear() },
+	};
+	for (butt in buttons)
+		$("#"+butt).click(buttons[butt]);
+}
 
 $(document).ready(function() {
         initialize_timers();
+        initialize_buttons();
         $("#timebar").click(seek);
         update_list();
-        // $("#main").draggable();
         $("#mlibForm").submit(filter_mlib);
         $("#mlib").toggle();
         $("#plist").toggle();
