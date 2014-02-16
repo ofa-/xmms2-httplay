@@ -83,8 +83,6 @@ body {
 
 #sliderbox {
     position: relative;
-    left:
-    overflow: hidden;
     color: rgb(200, 100, 0);
 }
 
@@ -163,6 +161,6 @@ body {
 #listable td {
     border-width: 1px;
     border-style: solid;
-    border-color: rgb(AA,88,66);
+    border-color: #AA8866;
     width: auto;
 }
