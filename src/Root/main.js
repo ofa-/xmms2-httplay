@@ -66,7 +66,7 @@ function update_status() {
             if (!g_info || info.album != g_info.album)
                 update_album(info);
             g_info = info;
-            $("#banner").text(info.title + ' - ' + info.artist);
+            $("#banner").html(info.title + '<br>' + info.artist);
             $("#media").html(media_str(info));
         }
     );
