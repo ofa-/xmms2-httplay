@@ -6,7 +6,6 @@ g_info = null;
 TIME_DELAY = 200;
 LIST_FIELDS = ['artist', 'title', 'tracknr', 'album'];
 LIST_ORDER  = ['artist', 'album', 'tracknr']
-PLIST_HEIGHT = "300px";
 slider_visible = "";
 
 function update_list() {
