@@ -145,7 +145,7 @@ function filter_mlib(add) {
 }
 
 function add_song(add) {
-    $.post("cli/add_song?q="+add);
+    $.post("cli/add_song?q="+add, update_list);
     return false;
 }
 
