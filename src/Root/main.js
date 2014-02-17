@@ -14,8 +14,9 @@ function update_list() {
         for (i in list) {
             row = document.createElement("tr");
             for (j in LIST_FIELDS) {
+                value = list[i][LIST_FIELDS[j]];
                 field = document.createElement("td");
-                field.appendChild(document.createTextNode(list[i][LIST_FIELDS[j]]));
+                if (value) field.appendChild(document.createTextNode(value));
                 row.appendChild(field);
             }
             field = document.createElement("td");
