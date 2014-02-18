@@ -1,6 +1,6 @@
 # xmms2-httplay #
 
-This is a fork from Vanicat's [xmms2-httplay][2],
+This is a fork from Rémy Vanicat's [xmms2-httplay][2],
 which is a fork from Simon Poirier's [xmms2-httplay][1].
 
 This version is slicker, and provides album-art display and playlist jump.
@@ -27,9 +27,14 @@ This version is on [ofa-'s github][3].
     cd src
     python main.py
 
-then browse to http://localhost:8000/
+    then browse to http://localhost:8000/
 
 Feel free to use the github project tracker.
+
+Enjoy !
+
+Simon, Rémy, and ofa-.
+
 
 
 [1]: http://code.google.com/p/xmms2-httplay/
