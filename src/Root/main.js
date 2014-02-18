@@ -146,7 +146,8 @@ function filter_mlib(add) {
                     row.appendChild(field);
                 }
                 field = document.createElement("td");
-                $("<a href=\"#\" onclick=\"add_song(" + result[i]['id'] + ")\">[+]</a>").appendTo(field);
+                $("<a href='#'>[+]</a>").appendTo(field)
+                    .click(wrap(add_song, result[i]['id']));
                 row.appendChild(field);
                 $('#filtered_mlib').append(row);
             }
