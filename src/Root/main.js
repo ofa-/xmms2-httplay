@@ -21,10 +21,15 @@ function update_list() {
             }
             field = document.createElement("td");
             $("<a href=\"#\" onclick=\"remove_song(" + i + ")\">[-]</a>").appendTo(field);
+            row.onclick = (function(x) { return function() { jump_to(x) } })(i);
             row.appendChild(field);
             $('#listable').append(row);
         }
     });
+}
+
+function jump_to(pos) {
+    $.post("cli/goto?pos="+pos);
 }
 
 function seek(e) {

@@ -67,6 +67,10 @@ class Cli(object):
         self.c.playlist_set_next_rel(1).wait()
         self.c.playback_tickle().wait()
 
+    def goto(self, pos):
+        self.c.playlist_set_next(int(pos)).wait()
+        self.c.playback_tickle().wait()
+
     def status(self):
         r = self.c.playback_current_id()
         r.wait()
