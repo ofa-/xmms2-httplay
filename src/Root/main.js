@@ -21,10 +21,8 @@ function update_list() {
             }
             field = document.createElement("td");
             $("<a href='#'>[-]</a>").appendTo(field)
-		.click((function(x,r) { return function() {
-			return remove_song(x,r)
-		}})(i, row));
-            row.onclick = (function(x) { return function() { jump_to(x) } })(i);
+		.click(wrap(remove_song, i, row));
+            row.onclick = wrap(jump_to, i);
             row.appendChild(field);
             $('#listable').append(row);
         }
@@ -33,6 +31,10 @@ function update_list() {
 
 function jump_to(pos) {
     $.post("cli/goto?pos="+pos);
+}
+
+function wrap(f, x, y) {
+    return function() { return f(x, y) }
 }
 
 function seek(e) {
