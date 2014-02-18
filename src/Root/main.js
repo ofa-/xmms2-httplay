@@ -20,7 +20,10 @@ function update_list() {
                 row.appendChild(field);
             }
             field = document.createElement("td");
-            $("<a href=\"#\" onclick=\"remove_song(" + i + ")\">[-]</a>").appendTo(field);
+            $("<a href='#'>[-]</a>").appendTo(field)
+		.click((function(x,r) { return function() {
+			return remove_song(x,r)
+		}})(i, row));
             row.onclick = (function(x) { return function() { jump_to(x) } })(i);
             row.appendChild(field);
             $('#listable').append(row);
@@ -155,9 +158,9 @@ function add_song(add) {
     return false;
 }
 
-function remove_song(pos) {
-    $.post("cli/remove_song?q="+pos);
-    update_list();
+function remove_song(pos, row) {
+    $.post("cli/remove_song?q="+pos,
+	function() { row.parentNode.removeChild(row) });
     return false;
 }
 
