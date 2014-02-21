@@ -1,5 +1,8 @@
-body {
+body, input {
 	font-family: monospace;
+}
+
+body {
 	overflow: hidden;
 }
 
@@ -111,10 +114,6 @@ body {
 	position: absolute;
 	top: 0;
 	width: 20em;
-}
-
-#mlib input {
-	font-family: monospace;
 }
 
 #listable td {
