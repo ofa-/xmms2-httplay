@@ -21,16 +21,17 @@ function update_list() {
             }
             field = document.createElement("td");
             $("<a href='#'>[-]</a>").appendTo(field)
-		.click(wrap(remove_song, i, row));
-            row.onclick = wrap(jump_to, i);
+		.click(wrap(remove_song, row));
+            row.onclick = wrap(jump_to, row);
             row.appendChild(field);
+            row.pos = i;
             $('#listable').append(row);
         }
     });
 }
 
-function jump_to(pos) {
-    $.post("cli/goto?pos="+pos);
+function jump_to(row) {
+    $.post("cli/goto?pos=" + row.pos);
 }
 
 function wrap(f, x, y) {
@@ -161,9 +162,13 @@ function add_song(add) {
     return false;
 }
 
-function remove_song(pos, row) {
-    $.post("cli/remove_song?q="+pos,
-	function() { row.parentNode.removeChild(row) });
+function remove_song(row) {
+    $.post("cli/remove_song?q=" + row.pos,
+	function() {
+		for (var n = row; n = n.nextSibling; )
+			n.pos = n.previousSibling.pos;
+		row.parentNode.removeChild(row);
+	});
     return false;
 }
 
