@@ -179,9 +179,13 @@ function update_album(info) {
 }
 
 function album_info(info) {
-       return    "<p>" + info.album + "</p>"
-               + "<p>" + info.artist + "</p>"
-               + "<p>" + info.date + "</p>"
+       return    "<p>" + str(info.album) + "</p>"
+               + "<p>" + str(info.artist) + "</p>"
+               + "<p>" + str(info.date) + "</p>"
+}
+
+function str(x) {
+	return x || "";
 }
 
 function initialize_buttons() {
