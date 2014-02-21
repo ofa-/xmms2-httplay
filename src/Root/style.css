@@ -133,3 +133,11 @@ b {	/* buttons */
 	cursor: pointer;
 	margin-left: 0.2em;
 }
+
+td {
+	padding-right: 1.5em;
+}
+
+td:last-child {
+	padding-right: 0;
+}
