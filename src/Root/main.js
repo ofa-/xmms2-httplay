@@ -133,7 +133,11 @@ function initialize_timers() {
 }
 
 function filter_mlib(add) {
-    query = $('#querytxt').val().trim().replace(/^|\s+/g, " ~");
+    query = $('#querytxt').val();
+    if (":" == query[0])
+        query = query.substr(1);
+    else
+        query = query.trim().replace(/^|\s+/g, " ~");
     $.getJSON("cli/search?q=" + encodeURIComponent(query)
 		+"&o="+LIST_ORDER.join('+')
 		+"&f=id+"+LIST_FIELDS.join('+')+(!add?'&add=True':''),
