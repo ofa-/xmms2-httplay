@@ -1,0 +1,45 @@
+#!/bin/bash
+
+usage() { echo "usage: $(basename $0) <start|stop|restart|status>"; }
+
+setup() {
+	dir="$(dirname "$0")/src"
+	cmd="python main.py -- httplay"
+	log="/tmp/httplay.log"
+}
+
+getpid() { pid=$(ps xo cmd,pid | awk "/^$cmd/"'{print $NF}'); }
+
+error() { echo $1 >&2; exit 1; }
+
+main() {
+	setup
+	getpid
+	case $1 in
+	""|-h|--help)
+		usage
+		;;
+	start)
+		[ "$pid" ] && error "already started"
+		cd "$dir" && $cmd >> $log 2>&1 &
+		;;
+	stop)
+		[ "$pid" ] || error "not started"
+		kill -9 $pid
+		;;
+	restart)
+		[ "$pid" ] && $0 stop
+		$0 start
+		;;
+	status)
+		[ "$pid" ] && echo "UP, PID=$pid"
+		[ "$pid" ] || echo "DOWN"
+		;;
+	*)
+		usage >&2
+		error "unknown command '$1'"
+		;;
+	esac
+}
+
+main $1
