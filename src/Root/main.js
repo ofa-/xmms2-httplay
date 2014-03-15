@@ -212,9 +212,10 @@ function initialize_buttons() {
 $(document).ready(function() {
         initialize_timers();
         initialize_buttons();
+        $("#mlib").hide();
+        $("#plist").hide();
         $("#timebar").click(seek);
-        update_list();
         $("#mlibForm").submit(filter_mlib);
-        $("#mlib").toggle();
-        $("#plist").toggle();
+        update_list();
+        filter_mlib(true);
 });
