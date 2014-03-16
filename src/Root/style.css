@@ -37,14 +37,23 @@ body {
 #albuminfo {
 	float: left;
 	display: block;
+	height: 5em;
+	min-width: 16em;
+	margin-left: 0.4em;
 }
 
 #ctrls {
-	width: 8em;
+	width: 16em;
 	display: block;
 	float: left;
 	clear: left;
 	margin-top: 2em;
+	text-align: justify;
+}
+
+#ctrls > span:last-child {
+	display: inline-block;
+	width: inherit;
 }
 
 #status {
@@ -96,7 +105,7 @@ body {
 }
 
 #slider > div {
-    padding-top: 1.2em;
+    padding-top: 1.3em;
     position: absolute;
     left:0px;
     top:0px;
@@ -130,7 +139,13 @@ body {
 
 b {	/* buttons */
 	cursor: pointer;
-	margin-left: 0.2em;
+	margin: 0.1em 0.2em;
+	border: 1px solid grey;
+	border-radius: 0.4em;
+	-webkit-border-radius: 0.4em;
+	-moz-border-radius: 0.4em;
+	padding: 0.1em 0.3em;
+	display: inline-block;
 }
 
 td {
