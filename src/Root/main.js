@@ -177,8 +177,11 @@ function update_album(info) {
     $("#albuminfo").html(album_info(info));
     $.getJSON("cli/cover?q="
                + encodeURIComponent(info.artist + " " + info.album),
-        function(info) {
-            $("#cover").attr("src", info.responseData.results[0].tbUrl);
+        function(res) {
+            if (res.responseData)
+                $("#cover").attr("src", res.responseData.results[0].tbUrl);
+            else
+                update_album(info);
         }
     );
 }
