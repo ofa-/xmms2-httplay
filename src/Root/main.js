@@ -132,12 +132,20 @@ function initialize_timers() {
     run_time();
 }
 
+function mk_xmms_query(query) {
+    parts = query.match(/"[^"]+"|\S+/g);
+    query = "";
+    for (i in parts)
+        query += " ~" + parts[i]
+    return query.substr(1);
+}
+
 function filter_mlib(add) {
     query = $('#querytxt').val();
     if (":" == query[0])
         query = query.substr(1);
     else
-        query = query.trim().replace(/^|\s+/g, " ~");
+        query = mk_xmms_query(query);
     $.getJSON("cli/search?q=" + encodeURIComponent(query)
 		+"&o="+LIST_ORDER.join('+')
 		+"&f=id+"+LIST_FIELDS.join('+')+(!add?'&add=True':''),
