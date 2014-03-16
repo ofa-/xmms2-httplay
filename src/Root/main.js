@@ -1,5 +1,3 @@
-statusTimerID = null;
-listupdate = 12;
 timeTimerID = null;
 revtime = false;
 g_info = null;
@@ -99,21 +97,13 @@ function channels_str(nb_channels) {
 }
 
 function update_time() {
-    if (g_info) {
-        g_info.playtime = Math.max(Math.min(g_info.playtime+TIME_DELAY, g_info.duration), 0);
-        $("#innertimebar").width((g_info.playtime/g_info.duration*100) + "%");
-        $("#time").html((revtime ? asctime(g_info.playtime-g_info.duration): asctime(g_info.playtime)) + " / " + asctime(g_info.duration) )
-    }
-}
+    if (!g_info) return;
 
-function run_status() {
-    update_status();
-    if ( listupdate == 0) {
-        listupdate = 12
-        update_list();
-    } else
-        listupdate = listupdate - 1;
-    statusTimerID = self.setTimeout("run_status()", 5000);
+    g_info.playtime = Math.max(Math.min(g_info.playtime+TIME_DELAY, g_info.duration), 0);
+    $("#innertimebar").width((g_info.playtime/g_info.duration*100) + "%");
+    $("#time").html((revtime ? asctime(g_info.playtime-g_info.duration): asctime(g_info.playtime)) + " / " + asctime(g_info.duration) )
+    if (g_info.playtime >= g_info.duration)
+        update_status();
 }
 
 function pls_clear() {
@@ -127,7 +117,6 @@ function run_time() {
 }
 
 function initialize_timers() {
-    run_status();
     run_time();
 }
 
@@ -231,6 +220,7 @@ $(document).ready(function() {
         $("#plist").hide();
         $("#timebar").click(seek);
         $("#mlibForm").submit(filter_mlib);
+        update_status();
         update_list();
         filter_mlib(true);
 });
