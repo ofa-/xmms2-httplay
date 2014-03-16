@@ -205,13 +205,17 @@ function str(x) {
 	return x || "";
 }
 
+function player(action) {
+	$.get("cli/"+action, update_status);
+}
+
 function initialize_buttons() {
 	var buttons = {
 		pls:  function () { toggle_slider("plist") },
 		lib:  function () { toggle_slider("mlib") },
-		play: function () { $.get("cli/play") },
-		next: function () { $.get("cli/next") },
-		prev: function () { $.get("cli/prev") },
+		play: function () { player("play") },
+		next: function () { player("next") },
+		prev: function () { player("prev") },
 		time: function () { fliptime() },
 		mlibSearch: function () { filter_mlib(true) },
 		mlibAdd:    function () { filter_mlib(false) },
