@@ -31,7 +31,7 @@ function update_list() {
 }
 
 function jump_to(row) {
-    $.post("cli/goto?pos=" + row.pos);
+    player("goto?pos=" + row.pos);
 }
 
 function wrap(f, x, y) {
@@ -41,8 +41,7 @@ function wrap(f, x, y) {
 function seek(e) {
     var pos = e.pageX - $("#timebar").offset().left;
     pos = pos / document.getElementById("timebar").offsetWidth;
-    $.get("cli/seek?time=" + Math.round(pos*g_info.duration))
-    update_status();
+    player("seek?time=" + Math.round(pos*g_info.duration))
 }
 
 function asctime(t) {
