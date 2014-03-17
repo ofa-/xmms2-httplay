@@ -1,7 +1,5 @@
-timeTimerID = null;
 revtime = false;
-g_info = null;
-TIME_DELAY = 200;
+g_info = {};
 LIST_FIELDS = ['artist', 'title', 'tracknr', 'album'];
 LIST_ORDER  = ['artist', 'album', 'tracknr']
 slider_visible = "";
@@ -72,8 +70,11 @@ function fliptime() {
 function update_status() {
     $.getJSON("cli/status",
         function(info) {
-            if (!g_info || info.album != g_info.album)
+            info.timestamp = new Date().getTime();
+            if (info.album != g_info.album)
                 update_album(info);
+            if (info.playstate != 1 && info.id != g_info.id)
+                info.playtime = 0;
             g_info = info;
             $("#banner").html(info.title + '<br>' + info.artist);
             $("#media").html(media_str(info));
@@ -97,27 +98,21 @@ function channels_str(nb_channels) {
 }
 
 function update_time() {
-    if (!g_info) return;
-
-    g_info.playtime = Math.max(Math.min(g_info.playtime+TIME_DELAY, g_info.duration), 0);
-    $("#innertimebar").width((g_info.playtime/g_info.duration*100) + "%");
-    $("#time").html((revtime ? asctime(g_info.playtime-g_info.duration): asctime(g_info.playtime)) + " / " + asctime(g_info.duration) )
-    if (g_info.playtime >= g_info.duration)
-        update_status();
+    if (!g_info)
+        return;
+    playtime = g_info.playtime;
+    if (g_info.playstate == 1)
+        playtime += new Date().getTime() - g_info.timestamp;
+    if (playtime >= g_info.duration)
+        return update_status();
+    $("#innertimebar").width((playtime/g_info.duration*100) + "%");
+    $("#time").html(asctime(playtime - (revtime ? g_info.duration : 0)) +
+                    " / " + asctime(g_info.duration) )
 }
 
 function pls_clear() {
     $.post('cli/clear');
     update_list();
-}
-
-function run_time() {
-    update_time();
-    timeTimerID = self.setTimeout("run_time()", TIME_DELAY);
-}
-
-function initialize_timers() {
-    run_time();
 }
 
 function mk_xmms_query(query) {
@@ -217,7 +212,7 @@ function initialize_buttons() {
 }
 
 $(document).ready(function() {
-        initialize_timers();
+        setInterval(update_time, 200);
         initialize_buttons();
         $("#mlib").hide();
         $("#plist").hide();

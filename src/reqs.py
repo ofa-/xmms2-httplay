@@ -59,7 +59,6 @@ class Cli(object):
         else:
             self.c.playback_start().wait()
 
-
     def stop(self):
         self.c.playback_stop().wait()
 
@@ -72,15 +71,22 @@ class Cli(object):
         self.c.playback_tickle().wait()
 
     def status(self):
-        r = self.c.playback_current_id()
+        r = self.c.playlist_current_pos()
         r.wait()
-        r = self.c.medialib_get_info(r.value())
+        pos = r.value()["position"]
+        r = self.c.playlist_list_entries()
+        r.wait()
+        list = r.value()
+        r = self.c.medialib_get_info(list[pos])
         r.wait()
         info = r.value()
         info = dict([(k[1], info[k]) for k in info])
         r = self.c.playback_playtime()
         r.wait()
         info["playtime"] = r.value()
+        r = self.c.playback_status()
+        r.wait()
+        info["playstate"] = r.value()
         return JSONEncoder().encode(info)
 
     def seek(self, time):
