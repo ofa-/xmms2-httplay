@@ -1,7 +1,7 @@
 revtime = false;
 g_info = {};
 LIST_FIELDS = ['artist', 'title', 'tracknr', 'album'];
-LIST_ORDER  = ['artist', 'album', 'tracknr']
+LIST_ORDER  = ['album', 'tracknr', 'artist']
 slider_visible = "";
 
 function update_list() {
