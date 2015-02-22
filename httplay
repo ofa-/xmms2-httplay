@@ -21,7 +21,8 @@ main() {
 		;;
 	start)
 		[ "$pid" ] && error "already started"
-		cd "$dir" && $cmd >> $log 2>&1 &
+		xmms server stats >> $log
+		cd "$dir" && exec $cmd >> $log 2>&1 &
 		;;
 	stop)
 		[ "$pid" ] || error "not started"
