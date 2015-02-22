@@ -45,7 +45,8 @@ function asctime(t) {
     var s = tt % 60;
     var m = (tt-s)/60;
     s = Math.abs(s);
-    return m+":"+(s>=10 ? "" : "0")+s;
+    m = Math.abs(m);
+    return (t>0 ? "" : "-")+m+":"+(s>=10 ? "" : "0")+s;
 }
 
 function toggle_slider(content) {
