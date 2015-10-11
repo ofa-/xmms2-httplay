@@ -22,6 +22,8 @@ from simplejson import JSONEncoder, JSONDecoder
 import subprocess, sys, time, threading
 import urllib
 
+import fip
+
 
 DAEMON_COMMAND = 'xmms2d'
 
@@ -87,6 +89,8 @@ class Cli(object):
         r = self.c.playback_status()
         r.wait()
         info["playstate"] = r.value()
+        if info["artist"] == "FIP":
+            fip.update_info(info)
         return JSONEncoder().encode(info)
 
     def seek(self, time):
