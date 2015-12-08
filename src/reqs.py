@@ -19,7 +19,7 @@ path.append('/usr/local/lib/python2.5/site-packages/')
 import xmmsclient
 import xmmsclient.collections
 from simplejson import JSONEncoder, JSONDecoder
-import subprocess, sys, time, threading
+import os, sys, time, threading
 import urllib
 
 # Radios
@@ -159,6 +159,10 @@ class Cli(object):
         self.c.playlist_clear().wait()
 
     def cover(self, q):
+	img_url = os.popen("./get-img-url.sh " + q).read();
+	return { "responseData": { "results": [ { "tbUrl": img_url } ] } };
+
+	# api below no longer exists as of 2015-12
 	url = "http://ajax.googleapis.com/ajax/services/search/images?v=1.0&q="
 	return urllib.urlopen(url+q).read()
 
