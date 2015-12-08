@@ -22,7 +22,9 @@ from simplejson import JSONEncoder, JSONDecoder
 import subprocess, sys, time, threading
 import urllib
 
+# Radios
 import fip
+import campus
 
 
 DAEMON_COMMAND = 'xmms2d'
@@ -83,6 +85,9 @@ class Cli(object):
         r.wait()
         info = r.value()
         info = dict([(k[1], info[k]) for k in info])
+        icy_title = (u'plugin/icymetaint', u'title') 
+        if icy_title in r.value():
+                info["icy_title"] = r.value()[icy_title]
         r = self.c.playback_playtime()
         r.wait()
         info["playtime"] = r.value()
@@ -91,6 +96,8 @@ class Cli(object):
         info["playstate"] = r.value()
         if info["artist"] == "FIP":
             fip.update_info(info)
+        if info["artist"] == "CAMPUS":
+            campus.update_info(info)
         return JSONEncoder().encode(info)
 
     def seek(self, time):
