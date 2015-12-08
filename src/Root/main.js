@@ -185,8 +185,6 @@ function update_album(info) {
         function(res) {
             if (res.responseData)
                 $("#cover").attr("src", res.responseData.results[0].tbUrl);
-            else
-                update_album(info);
         }
     );
 }
