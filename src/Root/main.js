@@ -105,14 +105,19 @@ function channels_str(nb_channels) {
 function update_time() {
     if (!g_info)
         return;
-    playtime = g_info.playtime;
+    var playtime = g_info.playtime;
     if (g_info.playstate == 1)
         playtime += new Date().getTime() - g_info.timestamp;
-    if (playtime >= g_info.duration)
-        return update_status();
-    $("#innertimebar").width((playtime/g_info.duration*100) + "%");
-    $("#time").html(asctime(playtime - (revtime ? g_info.duration : 0)) +
-                    " / " + asctime(g_info.duration) )
+    if (playtime > (g_info.duration - 80)) {
+        update_status();
+        return;
+    }
+    var percent = g_info.polling ? 100 : playtime/g_info.duration*100;
+    $("#innertimebar").width(percent + "%");
+
+    if (revtime || g_info.polling)
+        playtime -= g_info.duration;
+    $("#time").html(asctime(playtime) + " / " + asctime(g_info.duration))
 }
 
 function pls_clear() {
