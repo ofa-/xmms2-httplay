@@ -68,17 +68,21 @@ function fliptime() {
     revtime = !revtime;
 }
 
+var updating;
 function update_status() {
+    if (updating) return;
+    updating = true;
     $.getJSON("cli/status",
         function(info) {
             info.timestamp = new Date().getTime();
-            if (info.album != g_info.album)
+            if (info.album && info.album != g_info.album)
                 update_album(info);
             if (info.playstate != 1 && info.id != g_info.id)
                 info.playtime = 0;
             g_info = info;
             $("#banner").html(info.title + '<br>' + info.artist);
             $("#media").html(media_str(info));
+            updating = false;
         }
     );
 }
