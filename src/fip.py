@@ -52,6 +52,9 @@ def update_info(xmms_info):
 		info.year = ""
 		info.duration = 30
 		info.startTime = now
+		polling = 1
+	else:
+		polling = 0
 
 	xmms_info["title"]	= info.title
 	xmms_info["artist"]	= info.artist
@@ -60,6 +63,7 @@ def update_info(xmms_info):
 	xmms_info["duration"]	= info.duration * 1000
 	xmms_info["playtime"]	= (now - info.startTime) * 1000
 	xmms_info["url"]	= "[FIP] mp3"
+	xmms_info["polling"]	= polling
 
 #	print "=======\nplaytime={}/{} start={}".format(
 #		xmms_info["playtime"], info.duration, info.startTime)
