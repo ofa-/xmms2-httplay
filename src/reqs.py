@@ -19,8 +19,10 @@ path.append('/usr/local/lib/python2.5/site-packages/')
 import xmmsclient
 import xmmsclient.collections
 from simplejson import JSONEncoder, JSONDecoder
-import os, sys, time, threading
+import sys, time, threading
 import urllib
+
+import google
 
 # Radios
 import fip
@@ -160,7 +162,7 @@ class Cli(object):
         self.c.playlist_clear().wait()
 
     def cover(self, q):
-	img_url = os.popen("./get-img-url.sh " + q).read();
+	img_url = google.get_img_url(q)
 	return { "responseData": { "results": [ { "tbUrl": img_url } ] } };
 
 	# api below no longer exists as of 2015-12
