@@ -12,13 +12,18 @@ class SongInfo:
 		self.year   = song.get("anneeEditionMusique")
 		self.album  = song.get("titreAlbum")
 		self.title  = song.get("titre")
-		self.cover  = song["visuel"]["medium"]
+		self.cover  = song["visuel"].get("medium")
 		self.duration = song["endTime"] - song["startTime"]
 		self.startTime = song["startTime"]
 
+def get_data(item):
+	for key in [ "song", "emission" ]:
+		if key in item: return item[key]
+	# if item has no song or emission, we are dead
+
 def get_info(items=["current"]):
 	json_data = json.loads(urllib.urlopen(DATA_URL).read())
-	return [ SongInfo(json_data[item]["song"]) \
+	return [ SongInfo(get_data(json_data[item])) \
 			if item in json_data else None \
 			for item in items ]
 	
