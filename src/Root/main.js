@@ -181,7 +181,7 @@ function update_album(info) {
     $("#cover").attr("src", "");
     $("#albuminfo").html(album_info(info));
     $.getJSON("cli/cover?q="
-               + encodeURIComponent(info.artist + " " + info.album),
+               + encodeURIComponent(info.album + " " + info.artist),
         function(res) {
             if (res.responseData)
                 $("#cover").attr("src", res.responseData.results[0].tbUrl);
