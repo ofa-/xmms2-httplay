@@ -3,45 +3,40 @@
 import urllib2 as urllib
 import json
 
-DATA_URL = "http://www.fipradio.fr/sites/default/files/" \
-		"import_si/si_titre_antenne/FIP_player_current.json"
+DATA_URL = "http://www.fip.fr/livemeta"
+(previous3, previous2, previous1, current, next1, next2) = range(6)
 
 class SongInfo:
 	def __init__(self, song):
-		self.artist = song.get("interpreteMorceau")
-		self.year   = song.get("anneeEditionMusique")
-		self.album  = song.get("titreAlbum")
-		self.title  = song.get("titre")
-		self.cover  = song["visuel"].get("medium")
-		self.duration = song["endTime"] - song["startTime"]
-		self.startTime = song["startTime"]
+		self.artist = song["authors"]
+		self.year   = song["anneeEditionMusique"]
+		self.album  = song["titreAlbum"]
+		self.title  = song["title"]
+		self.cover  = song["visual"]
+		self.duration = song["end"] - song["start"]
+		self.startTime = song["start"]
 
-def get_data(item):
-	for key in [ "song", "emission" ]:
-		if key in item: return item[key]
-	# if item has no song or emission, we are dead
-
-def get_info(items=["current"]):
+def get_info(items=[current]):
 	json_data = json.loads(urllib.urlopen(DATA_URL).read())
-	return [ SongInfo(get_data(json_data[item])) \
-			if item in json_data else None \
+	return [ SongInfo(json_data["steps"] \
+				[json_data["levels"][0]["items"][item]]) \
 			for item in items ]
 	
 
 def main():
-	items = [ "previous2", "previous1", "current", "next1", "next2" ]
+	items = [ previous2, previous1, current, next1, next2 ]
 	infos = get_info(items)
 	for item, info in zip(items, infos):
 		if not info:
 			continue
-		p = "=>" if item == "current" else "  "
+		p = "=>" if item == current else "  "
 		print p, u"{title} / {artist} ({year})".format(**vars(info))
 	
 import time
 
 def update_info(xmms_info):
 	'''called by cli/status (reqs.py) when changing titles'''
-	curr, next = get_info(["current", "next1"])
+	curr, next = get_info([current, next1])
 	now = int(time.time())
 	info = curr if (curr.startTime + curr.duration) > now else next
 	if not info:
