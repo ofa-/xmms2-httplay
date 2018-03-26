@@ -12,7 +12,7 @@ class SongInfo:
 		self.year   = song["anneeEditionMusique"]
 		self.album  = song["titreAlbum"]
 		self.title  = song["title"]
-		self.cover  = song["visual"]
+		self.cover  = song.get("visual")
 		self.duration = song["end"] - song["start"]
 		self.startTime = song["start"]
 
