@@ -9,7 +9,7 @@ DATA_URL = "http://www.fip.fr/livemeta"
 class SongInfo:
 	def __init__(self, song):
 		self.artist = song["authors"]
-		self.year   = song["anneeEditionMusique"]
+		self.year   = song.get("anneeEditionMusique")
 		self.album  = song["titreAlbum"]
 		self.title  = song["title"]
 		self.cover  = song.get("visual")
