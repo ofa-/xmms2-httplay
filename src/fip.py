@@ -18,8 +18,9 @@ class SongInfo:
 
 def get_info(items=[current]):
 	json_data = json.loads(urllib.urlopen(DATA_URL).read())
-	return [ SongInfo(json_data["steps"] \
-				[json_data["levels"][0]["items"][item]]) \
+	song_uuids = json_data["levels"][0]["items"]
+
+	return [ SongInfo(json_data["steps"][song_uuids[item]]) \
 			for item in items ]
 	
 
